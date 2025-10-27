@@ -1,8 +1,9 @@
-const counterEl = document.querySelector('.counter');
 const increaseButtonEl = document.querySelector('.counter__button--increase');
+const counterValueEl = document.querySelector('.counter__value');
 const decreaseButtonEl = document.querySelector('.counter__button--decrease');
 const resetButtonEl = document.querySelector('.counter__reset-button');
-const counterValueEl = document.querySelector('.counter__value');
+
+const counterEl = document.querySelector('.counter');
 const counterTitleEl = document.querySelector('.counter__title');
 
 const incrementCounter = () => {
@@ -37,6 +38,29 @@ const incrementCounter = () => {
   // unfocus (blur) button
   increaseButtonEl.blur();
 };
+
+decreaseButtonEl.addEventListener('click', () => {
+  // get current value of counter
+  const currentValue = counterValueEl.textContent;
+
+  // convert value value to number type
+  const currentValueAsNumber = +currentValue;
+
+  // decrement by 1
+  let newValue = currentValueAsNumber - 1;
+
+  // check if new value is less than 0
+  if (newValue < 0) {
+    // if it is, force it to be 0 instead
+    newValue = 0;
+  }
+
+  // update counter value with new value
+  counterValueEl.textContent = newValue;
+
+  // unfocus (blur) button
+  decreaseButtonEl.blur();
+});
 
 increaseButtonEl.addEventListener('click', incrementCounter);
 document.addEventListener('keydown', incrementCounter);

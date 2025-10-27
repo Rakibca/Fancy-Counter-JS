@@ -62,5 +62,23 @@ decreaseButtonEl.addEventListener('click', () => {
   decreaseButtonEl.blur();
 });
 
+resetButtonEl.addEventListener('click', () => {
+  // set counter value to 0
+  counterValueEl.textContent = 0;
+
+  // reset background color
+  counterEl.classList.remove('counter--limit');
+
+  // reset counter title
+  counterTitleEl.textContent = 'Fancy Counter';
+
+  // enable increase and decrease buttons
+  increaseButtonEl.disabled = false;
+  decreaseButtonEl.disabled = false;
+
+  // unfocus (blur) reset button
+  resetButtonEl.blur();
+});
+
 increaseButtonEl.addEventListener('click', incrementCounter);
 document.addEventListener('keydown', incrementCounter);
